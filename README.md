@@ -36,6 +36,14 @@ Time to be creative, and efficient. Do what you think would be the best for your
 
 ## Finally
 
+Fixes I made:
+1. needed cors configuraton in sign up
+2. user should be able to update name on the user update view
+3. numeric values must be positive on the user update , business oriented fix
+4. added also availability field  for updating, needed it because I couldn't find where I can update availability and I think it is the right space to add it 
+5. I noticed password was visible when a user typed it(while creating user), I fixed it, made it with the standard bullet points, makes the platform more trusted
+6. in the ProjectDetails component, you should check if project is defined before trying to access its properties., added a Loder there if the project wasn't defined,maybe a backend error happens for example and couldn't find project 
+7. When you try to access a project, the way the backend sends the project is as an object inside an array. Therefore, you can either fix the way the backend sends the response, or you can handle the data differently in client side.
 Send us the project and answer to those simple questions : 
 - What bugs did you find ? How did you solve these and why ? 
 - Which feature did you develop and why ? 
