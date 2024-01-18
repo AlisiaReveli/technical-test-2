@@ -60,7 +60,7 @@ const Detail = ({ user }) => {
                 <input
                   className="projectsInput text-[14px] font-normal text-[#212325] bg-[#F9FBFD] rounded-[10px]"
                   name="name"
-                  disabled
+                  type="string"
                   value={values.name}
                   onChange={handleChange}
                 />
@@ -88,7 +88,6 @@ const Detail = ({ user }) => {
                 />
               </div>
             </div>
-
             <div className="flex flex-wrap justify-between mt-4">
               <div className="w-full md:w-[260px] ">
                 <div className="text-[14px] text-[#212325] font-medium	">Days worked</div>
@@ -97,7 +96,18 @@ const Detail = ({ user }) => {
                   type="number"
                   name="days_worked"
                   value={values.days_worked}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    // Ensure the entered value is non-negative
+                    const inputValue = Math.max(0, parseInt(e.target.value, 10));
+
+                    // Update the state with the non-negative value
+                    handleChange({
+                      target: {
+                        name: e.target.name,
+                        value: inputValue,
+                      },
+                    });
+                  }}
                 />{" "}
               </div>
               <div className="w-full md:w-[260px] ">
@@ -107,7 +117,18 @@ const Detail = ({ user }) => {
                   type="number"
                   name="costPerDay"
                   value={values.costPerDay}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    // Ensure the entered value is non-negative
+                    const inputValue = Math.max(0, parseInt(e.target.value, 10));
+
+                    // Update the state with the non-negative value
+                    handleChange({
+                      target: {
+                        name: e.target.name,
+                        value: inputValue,
+                      },
+                    });
+                  }}
                 />
               </div>
               <div className="w-full md:w-[260px] ">
@@ -117,9 +138,30 @@ const Detail = ({ user }) => {
                   type="number"
                   name="sellPerDay"
                   value={values.sellPerDay}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    // Ensure the entered value is non-negative
+                    const inputValue = Math.max(0, parseInt(e.target.value, 10));
+
+                    // Update the state with the non-negative value
+                    handleChange({
+                      target: {
+                        name: e.target.name,
+                        value: inputValue,
+                      },
+                    });
+                  }}
                 />
               </div>
+            </div>
+            <div className="w-full md:w-[260px] ">
+              <div className="text-[14px] text-[#212325] font-medium	">Availability</div>
+              <input
+                className="projectsInput text-[14px] font-normal text-[#212325] rounded-[10px]"
+                type="string"
+                name="availability"
+                value={values.availability}
+                onChange={handleChange}
+              />
             </div>
             <div className="w-full mt-3">
               <div className="text-[14px] text-[#212325] font-medium	">Description</div>
@@ -132,7 +174,7 @@ const Detail = ({ user }) => {
             </div>
 
             <div className="flex  mt-2">
-              <LoadingButton className="bg-[#0560FD] text-[16px] font-medium text-[#FFFFFF] py-[12px] px-[22px] rounded-[10px]" loading={isSubmitting} onChange={handleSubmit}>
+              <LoadingButton className="bg-[#0560FD] text-[16px] font-medium text-[#FFFFFF] py-[12px] px-[22px] rounded-[10px]" loading={isSubmitting} onClick={handleSubmit}>
                 Update
               </LoadingButton>
               <button className="ml-[10px] bg-[#F43F5E] text-[16px] font-medium text-[#FFFFFF] py-[12px] px-[22px] rounded-[10px]" onClick={deleteData}>

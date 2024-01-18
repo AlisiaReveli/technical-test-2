@@ -7,6 +7,16 @@ const port = 8080;
 
 console.log("coucou");
 
+const cors = require("cors");
+
+const corsOptions = {
+  origin: "http://localhost:8082",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 // app.use(hsts({ maxAge: 31536000, includeSubDomains: true, preload: true }));
 app.use(express.static(path.join(__dirname, "../build")));
 
